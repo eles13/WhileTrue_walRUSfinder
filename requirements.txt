@@ -1,0 +1,4 @@
+git+https://github.com/qubvel/segmentation_models.pytorch
+albumentations
+matplotlib
+pandas 
