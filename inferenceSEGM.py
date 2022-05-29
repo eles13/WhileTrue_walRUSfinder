@@ -66,11 +66,12 @@ if __name__ =='__main__':
     output_csv = output_dir + '_csv' if output_dir[-1] != '/' else output_dir[:-1] + '_csv'
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
+    if os.path.exists(output_csv):
         shutil.rmtree(output_csv)
     os.mkdir(output_dir)
     os.mkdir(output_csv)
     best_model = WalrusDetectionSEG(path_model=model_path)
-    for j, image_name in tqdm.tqdm(enumerate(images)):
+    for image_name in tqdm.tqdm(images):
         all_centers = []
         orig_img, mask, centers = best_model.predict(os.path.join(list_dir, image_name))
         plt.figure(figsize=(20,20))
@@ -84,9 +85,5 @@ if __name__ =='__main__':
         for i in range(len(centers)):
             all_centers.append({'x': centers[i][0], 'y': centers[i][1]})
         all_centers = pd.DataFrame(all_centers)
-        all_centers.to_csv(os.path.join(output_csv, f"{image_name.split('.')[0]}.csv"), index=False)
-        if j > 4:
-            break
-    
-            
+        all_centers.to_csv(os.path.join(output_csv, f"{image_name.split('.')[0]}.csv"), index=False)    
         

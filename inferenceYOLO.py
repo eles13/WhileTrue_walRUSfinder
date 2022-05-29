@@ -2,6 +2,7 @@ import tqdm
 import sys
 import os
 import torch
+import shutil
 
 if __name__ == '__main__':
     args = sys.argv[1:]
@@ -10,13 +11,14 @@ if __name__ == '__main__':
     path_model = args[0]
     outdir = args[2]
     if os.path.exists(outdir):
-        os.rmdir(outdir)
+        shutil.rmtree(outdir, ignore_errors=True)
     os.mkdir(outdir)
     model = torch.hub.load('ultralytics/yolov5', 'custom', path=path_model)
     for img in tqdm.tqdm(images):
         out = model(os.path.join(imgdir, img))
         df = out.pandas().xyxy[0]
-        df['x_center'] = (df['xmax'] + df['xmin']) / 2
-        df['y_center'] = (df['ymax'] + df['ymin']) / 2
-        df.to_csv(os.path.join(outdir, img[:-3]+'csv'), index=False, columns = ['x_center', 'y_center'])
-    
+        df['x'] = (df['xmax'] + df['xmin']) // 2
+        df['y'] = (df['ymax'] + df['ymin']) // 2
+        df['x'] = df['x'].astype(int)
+        df['y'] = df['y'].astype(int)
+        df.to_csv(os.path.join(outdir, img[:-3]+'csv'), index=False, columns = ['x', 'y'])
