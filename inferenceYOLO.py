@@ -22,4 +22,3 @@ if __name__ == '__main__':
         df['x'] = df['x'].astype(int)
         df['y'] = df['y'].astype(int)
         df.to_csv(os.path.join(outdir, img[:-3]+'csv'), index=False, columns = ['x', 'y'])
-    

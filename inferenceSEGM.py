@@ -85,7 +85,5 @@ if __name__ =='__main__':
         for i in range(len(centers)):
             all_centers.append({'x': centers[i][0], 'y': centers[i][1]})
         all_centers = pd.DataFrame(all_centers)
-        all_centers.to_csv(os.path.join(output_csv, f"{image_name.split('.')[0]}.csv"), index=False)
-    
-            
+        all_centers.to_csv(os.path.join(output_csv, f"{image_name.split('.')[0]}.csv"), index=False)    
         

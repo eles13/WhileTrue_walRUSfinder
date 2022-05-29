@@ -1,7 +1,6 @@
 # WhileTrue_walRUSfinder
 With this also one can detect walruses in the wild from drone shots
 
-
 в папке results ответы на тестовый датасет(2 варианта, но по нашему мнению от Unet получился получше)
 
 запускать все инеференсы через командную строку, указав 3 аргумента:
