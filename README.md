@@ -11,4 +11,7 @@ With this also one can detect walruses in the wild from drone shots
 
 предварительно установите необходимые библиотеки, описанные в txt файле
 
-zip архив models распаковать
+zip архив models скачать и распаковать распаковать
+
+
+https://drive.google.com/file/d/1wC0B5-q6NQYWkQFgLAuSEECWgeCOaB2T/view?usp=sharing
